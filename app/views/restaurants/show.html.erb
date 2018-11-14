@@ -1,0 +1,17 @@
+<div class="container">
+  <h1 class="text-center"> <%= @restaurant.name %> </h1>
+  <h2 class="text-center"> <%= @restaurant.address %> </h2>
+  <h2 class="text-center"> <%= @restaurant.phone_number %> </h2>
+
+  <% @restaurant.reviews.each do |r| %>
+    <h3 class="text-center"><%= r.content %> | rating: <%= r.rating %> / 5 </h3>
+  <% end %>
+
+
+  <%= render 'reviews/form', restaurant: @restaurant, review: Review.new %>
+
+
+  <%= link_to "Return", restaurants_path, class: "btn btn-success" %>
+  <%= link_to "Write a Review", new_restaurant_review_path(@restaurant), class: "btn btn-primary"  %>
+</div>
+
